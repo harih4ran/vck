@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Viduthalai Chiruthaigal Katchi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body onload="document.frm1.submit()">
+  <form action="{{url}}" name="frm1" method="post">
+    <div class="flex items-center justify-center h-screen">
+      <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin h-6 w-6" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    </div>
+    <input type="hidden" name="signature" value="{{signature}}" />
+    <input type="hidden" name="orderNote" value="{{postData.orderNote}}" />
+    <input type="hidden" name="orderCurrency" value="{{postData.orderCurrency}}" />
+    <input type="hidden" name="customerName" value="{{postData.customerName}}" />
+    <input type="hidden" name="customerEmail" value="{{postData.customerEmail}}" />
+    <input type="hidden" name="customerPhone" value="{{postData.customerPhone}}" />
+    <input type="hidden" name="orderAmount" value="{{postData.orderAmount}}" />
+    <input type="hidden" name="notifyUrl" value="{{postData.notifyUrl}}" />
+    <input type="hidden" name="returnUrl" value="{{postData.returnUrl}}" />
+    <input type="hidden" name="appId" value="{{postData.appId}}" />
+    <input type="hidden" name="orderId" value="{{postData.orderId}}" />
+  </form>
+</body>
+
+</html>

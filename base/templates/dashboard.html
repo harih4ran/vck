@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'nav/topbar.html' %}
+{% include 'nav/sidebar.html' %}
+<br />
+<div class="px-2">
+  {% if messages %}
+  <ul class="messages px-20 bg-orange-500 text-white font-bold rounded-lg py-2 mb-10">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }} flex justify-center" {% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="flex justify-center">
+    <div>
+      {% if member %}
+      <a href="{% url 'generateid' %}"
+        class="my-10 bg-red-600 shadow-lg py-2 px-3 text-center rounded-lg text-white w-full border-2 border-red-600 hover:bg-transparent hover:text-red-600 font-bold">Generate
+        VCK Membership Card</a>
+      {% else %}
+      <form method="POST" action="{% url 'handlerequest' %}">
+        {% csrf_token %}
+        <button type="submit"
+          class="my-2 bg-green-600 shadow-lg py-2 px-3 text-center rounded-lg text-white w-full border-2 border-green-600 hover:bg-transparent hover:text-green-600 font-bold"
+          value="pay">Please Pay</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+  {% if request.user.card_front and request.user.card_back %}
+
+  <div class="my-4">
+    <div class="md:px-96 py-2">
+      <div class="p-3 bg-white shadow-lg rounded-lg">
+        <img src="{{request.user.card_front.url}}" alt="{{request.user.name}}" />
+      </div>
+    </div>
+    <div class="md:px-96">
+      <div class="p-3 bg-white shadow-lg rounded-lg">
+        <img src="{{request.user.card_back.url}}" alt="{{request.user.name}}" />
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% include 'nav/footer.html' %}
+{% endblock %}

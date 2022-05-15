@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'nav/topbar.html' %}
+{% include 'nav/sidebar.html' %}
+<form method="POST" action="{% url 'profileupdate' %}">
+    {% csrf_token %}
+<div class="flex flex-wrap px-10">
+          <div class="w-full md:w-1/2 p-2">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-300">Name</label>
+            <input type="text" id="name" value="{{request.user.name}}" name="name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                disabled>
+        </div>
+        <div class="w-full md:w-1/2 p-2">
+            <label for="fathers_name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-300">Father's
+                Name</label>
+            <input type="text" id="fathers_name" value="{{request.user.fathersname}}" name="fathersname"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                disabled>
+        </div>
+        <div class="w-full md:w-1/2 p-2">
+            <label for="Age" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-300">Age</label>
+            <input type="text" id="Age" value="{{request.user.age}}" name="age"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <div class="w-full md:w-1/2 p-2">
+            <label for="gender" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-300">Gender
+            </label>
+            <input type="text" id="gender" name="gender"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                value="{{request.user.gender}}">
+        </div>
+        <div class="w-full md:w-1/2 p-2">
+            <label for="p_phone" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-300">Primary
+                Phone
+            </label>
+            <input type="text" id="p_phone" value="{{request.user.primary_phone}}" name="primary_phone"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <div class="w-full md:w-1/2 p-2">
+            <label for="s_phone" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-300">Secondary
+                Phone
+            </label>
+            <input type="text" id="s_phone" value="{{request.user.second_phone}}" name="second_phone"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <div class="w-full md:w-1/2 p-2">
+            <label for="address" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-300">Address
+            </label>
+            <input type="text" id="address" value="{{request.user.address}}" name="address"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <div class="w-full md:w-1/2 p-2">
+            <label for="business" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-300">Business
+            </label>
+            <input type="text" id="business" value="{{request.user.business}}" name="business"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <div class="w-full md:w-1/2 p-2">
+            <label for="vck_id" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-gray-300">VCK ID
+            </label>
+            <input type="text" id="vck_id" value="{{request.user.vck_id}}"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                disabled>
+        </div>
+        <div class="w-full p-2 text-center">
+           
+            </label>
+            <button type="submit" 
+                class="bg-orange-500 border border-gray-300 text-white font-bold text-sm rounded-lg block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >Update</button>
+        </div>
+</div>
+</form>
+{% include 'nav/footer.html' %}
+{% endblock %}

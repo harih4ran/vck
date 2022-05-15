@@ -1,0 +1,45 @@
+{% load static %}
+<div class="p-3">
+    <header class="text-white bg-[#2b46bd] body-font rounded-lg shadow-lg">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-white md:mb-0">
+                <img src="{% static 'logo.png' %}" class="h-10"/>
+                <span class="ml-3 text-xl">விடுதலைச் சிறுத்தைகள் கட்சி</span>
+            </a>
+            <button class="lg:hidden" onclick="menuClick()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+              </button>
+            <nav class="hidden md:block md:ml-auto flex flex-wrap items-center text-base justify-center text-white">
+              <a class="mr-5" href="{% url 'index' %}">Home</a> 
+              <a class="mr-5" href="{% url 'register' %}">Register</a>
+                {% if request.user.is_authenticated %}
+                <a class="mr-5" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="mr-5" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                <a class="mr-5" href="{% url 'login' %}">Login</a>
+                {% endif %}
+                
+            </nav>
+           
+        </div>
+    </header>
+    <div class="hidden" id="mobileMenu">
+        <ul class="lg:hidden font-bold text-gray-600">
+          <li class="mt-1"><a class="py-2" href="">Home</a>
+          </li>
+          <li class="mt-1"><a class="mr-5" href="{% url 'register' %}">Register</a>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="mt-1"> <a class="mr-5" href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="mt-1"> <a class="mr-5" href="{% url 'login' %}">Login</a>
+          </li>
+          {% endif %}
+    
+        </ul>
+      </div>
+</div>

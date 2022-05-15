@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+	<h1 class="font-bold text-2xl text-center my-3">Payment Report</h1>
+	<div class="flex justify-center p-2 lg:p-10">
+		<table class="border-collapse border border-slate-400">
+			<tbody>
+				<tr>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">Order ID</td>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">{{postData.orderId}}</td>
+				</tr>
+				<tr>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">Order Amount</td>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">{{postData.orderAmount}}</td>
+				</tr>
+				<tr>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">Reference ID</td>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">{{postData.referenceId}}</td>
+				</tr>
+				<!-- <tr>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">Transaction Status</td>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">{{postData.txStatus}}</td>
+				</tr> -->
+				<tr>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">Payment Mode </td>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">{{postData.paymentMode}}</td>
+				</tr>
+				<tr>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">Message</td>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">{{postData.txMsg}}</td>
+				</tr>
+				<tr>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">Transaction Time</td>
+					<td class="border border-slate-300 px-2 md:px-10 py-2 md:py-4">{{postData.txTime}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</div>
+<div class="text-center">
+	<a href="{% url 'dashboard' %}" class="font-bold py-2 px-4 bg-green-500 text-white rounded-md">Dashboard</a>
+</div>
+{% endblock %}

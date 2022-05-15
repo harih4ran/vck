@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Viduthalai Chiruthaigal Katchi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% include 'css.html' %}
+</head>
+
+<body class="bg-gray-100">
+    {% block content %}
+
+    {% endblock %}
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <!-- <div id="google_element"></div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+    <script>
+        function loadGoogleTranslate() {
+            new google.translate.TranslateElement("google_element");
+        }
+    </script> -->
+</body>
+
+</html>
