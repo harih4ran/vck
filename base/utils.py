@@ -6,6 +6,8 @@ from io import BytesIO
 import sys
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.files import File
+import qrcode
+
 
 def generateID(request):
     try:
@@ -22,6 +24,23 @@ def generateID(request):
 
         # common
         path = os.getcwd()
+
+        qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=3,
+        border=4,
+        )
+        qr.add_data('Name - '+str(request.user.name))
+        qr.add_data('Gender - '+str(request.user.gender))
+        qr.add_data('Age - '+str(request.user.age))
+        qr.add_data("Father's Name"+str(request.user.fathersname))
+        qr.add_data('Address'+str(request.user.address))
+        
+        qr.make(fit=True)
+
+        qrimg = qr.make_image(fill_color="black", back_color="white")
+        # img.save(path+"/base/some_file.png")
         frontside = Image.open(path+"/base/front.jpeg")
         frontside_draw = ImageDraw.Draw(frontside)
         backside= Image.open(path+"/base/back.jpeg")
@@ -30,6 +49,7 @@ def generateID(request):
         #avator
         avator= Image.open(photo)
         frontside.paste(avator, (40, 245))
+        backside.paste(qrimg,(753,410))
         
         # common 
         font = ImageFont.truetype(path+"/base/static/font.ttf",size=20)  

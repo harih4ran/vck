@@ -13,9 +13,10 @@ import base64
 import random
 import string
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
+import os
 
-def index(request):
+def index(request):  
     return render(request,'index.html')
 
 @login_required(login_url="login")
@@ -28,7 +29,6 @@ def dashboard(request):
         return render(request,'dashboard.html',context)
     else:
         return redirect('login')
-
 
 @login_required(login_url="login")
 def profile(request):
@@ -236,4 +236,22 @@ def Profileupdate(request):
     else:
         return redirect('dashboard')       
 
+def FrontDownload(request):
+    if request.user.is_authenticated:
+        image = request.user
+        image_buffer = open(request.user.card_front.path, "rb").read()
+        response = HttpResponse(image_buffer, content_type='application/jpeg');
+        response['Content-Disposition'] = 'attachment; filename="%s"' % os.path.basename(request.user.card_front.path)
+        return response
+    else:
+        return redirect('dashboard')
     
+def BackDownload(request):
+    if request.user.is_authenticated:
+        image = request.user
+        image_buffer = open(request.user.card_back.path, "rb").read()
+        response = HttpResponse(image_buffer, content_type='application/jpeg');
+        response['Content-Disposition'] = 'attachment; filename="%s"' % os.path.basename(request.user.card_back.path)
+        return response
+    else:
+        return redirect('dashboard')
